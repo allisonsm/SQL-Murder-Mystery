@@ -93,6 +93,23 @@ LIMIT 10;
 SELECT *
 FROM get_fit_now_check_in
 WHERE check_in_date = 20180109;
+
+SELECT *
+FROM get_fit_now_member AS m
+LEFT JOIN get_fit_now_check_in AS c
+ON m.id = c.membership_id
+WHERE m.membership_status = "gold" AND c.check_in_date = 20180109 AND id LIKE "48Z%";
+
+/*  Two people fit this citerea:
+    - Joe Germuska, ID #48Z7A, Person_ID #28819
+    - Jeremy Bowers, ID #48Z55, Person_ID #67318
+    Either could have been seen by Annabel at the crime scene and the gym on Jan. 9th.
+    They are both Gold Members at the gym with member ID's that match Witness #1's criteria.
+    
+    Step 5: Find out which potential suspect has a license plate matching Witness #1's criteria
+*/
+
+
               
 
               
