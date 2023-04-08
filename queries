@@ -109,6 +109,75 @@ WHERE m.membership_status = "gold" AND c.check_in_date = 20180109 AND id LIKE "4
     Step 5: Find out which potential suspect has a license plate matching Witness #1's criteria
 */
 
+SELECT *
+FROM person
+WHERE id = 28819 OR id =67318;
+
+/* Joe's license_id # is 173289, Jeremy's is 423327 */
+
+SELECT *
+FROM drivers_license
+WHERE id = 173289 OR id = 423327
+AND plate_number LIKE "%H42W%";
+
+/* Step 6: Jeremy appears to be our suspect. Let's see if he has a police interview on record: */
+
+SELECT *
+FROM interview
+WHERE person_id = 67318;
+
+/* Jeremy says he was hired by a woman who:
+    - Is about 5'5" (65"), or 5'7" (67")
+    - Has red hair
+    - Drives a Tesla Model S
+    - Attended SQL Symphony Concert three times in December 2017
+    
+   Step 6: Find the woman who hired Jeremy
+*/
+
+SELECT *
+FROM drivers_license
+WHERE hair_color = "red" 
+AND gender = "female"
+AND car_make = "Tesla"
+AND car_model = "Model S"
+AND height BETWEEN 65 AND 67;
+
+/* Three license ID's match the description:
+    - 202298
+    - 291182
+    - 918773 
+*/
+
+SELECT *
+FROM person
+WHERE license_id = 202298
+OR license_id = 291182
+OR license_id = 918773;
+
+/* Our three suspects for the hit are:
+    - Red Korb, # 78881
+    - Regina George, # 90700
+    - Miranda Priestly, # 99716
+   Let's find who checked in a SQL Symphony multiple times in December 2017
+*/
+
+SELECT person_id, event_name, COUNT(DISTINCT date) as attendances
+FROM facebook_event_checkin
+WHERE date BETWEEN 20171201 AND 20171231
+AND event_name = "SQL Symphony Concert"
+AND person_id = 78881 OR person_id = 90700 or person_id = 99716
+GROUP BY person_id;
+
+/* Miranda Priestly fits our killer's criteria, having checked in on Facebook at the SQL Symphony three times */
+
+
+
+
+
+
+    
+
 
               
 
