@@ -9,7 +9,8 @@
         - solution
         - income
         - person
-First I looked at the crime scene table: */
+First I looked at the crime scene table:
+*/
 
 SELECT *
 FROM crime_scene_report
@@ -25,4 +26,74 @@ WHERE date = 20180115 OR date = 20181501;
 
 SELECT *
 FROM crime_scene_report
-WHERE date = 20180115 AND city = "SQL City";
+WHERE date = 20180115 AND city = "SQL City" AND type = "murder";
+
+/* Step 2: Tracking down witness statements
+     - Witness #1: lives at last house on "Northwestern Dr"
+     - Witness #2: Annabel, lives somewhere on "Franklin Ave"
+*/
+
+SELECT *
+FROM person
+LIMIT 10;
+
+SELECT *
+FROM interview
+LIMIT 10;
+
+SELECT *
+FROM person
+WHERE address_street_name = "Northwestern Dr"
+ORDER BY address_number DESC;
+
+SELECT *
+FROM interview
+WHERE person_id = 14887;
+
+/* Step 3: Search for Witness #1's partial sighting of Gym Bag # and License Plate #
+     - Gym bag, supposedly a Gold Member,  started with "48Z"
+     - License plate included "H42W"
+*/
+
+SELECT *
+FROM get_fit_now_member
+LIMIT 10;    
+
+SELECT *
+FROM get_fit_now_member
+WHERE membership_status = "gold" AND id LIKE "48Z%";
+
+--
+
+SELECT *
+FROM drivers_license
+LIMIT 20; 
+
+SELECT *
+FROM drivers_license
+WHERE plate_number LIKE "%H42W%";
+
+
+/* Step 4: Search for Witness #2, Annabel's statement */
+
+SELECT *
+FROM person
+WHERE address_street_name = "Franklin Ave" AND name LIKE "Annabel%";
+
+SELECT *
+FROM interview
+WHERE person_id = 16371;
+
+/* She recognizes the killer from seeing them at the gym on January 9th */
+
+SELECT *
+FROM get_fit_now_check_in
+LIMIT 10;
+
+SELECT *
+FROM get_fit_now_check_in
+WHERE check_in_date = 20180109;
+              
+
+              
+
