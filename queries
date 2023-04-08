@@ -1,0 +1,28 @@
+/* Step 1: Retrieving crime scene report:
+ - Using the preset query I discovered the database has the tables: 
+        - crime_scene_report
+        - drivers_license
+        - facebook_event_checkin
+        - interview
+        - get_fit_now_member
+        - get_fit_now_checkin
+        - solution
+        - income
+        - person
+First I looked at the crime scene table: */
+
+SELECT *
+FROM crime_scene_report
+LIMIT 20;
+
+/* Then I looked for the report using the only information we know about the murder: that it took place on January 15th, 2018 in SQL City */
+
+SELECT *
+FROM crime_scene_report
+WHERE date = 20180115 OR date = 20181501;
+
+/* After determining the date format, I narrowed it down: */
+
+SELECT *
+FROM crime_scene_report
+WHERE date = 20180115 AND city = "SQL City";
