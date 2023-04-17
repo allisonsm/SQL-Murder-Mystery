@@ -35,7 +35,7 @@ FROM crime_scene_report
 WHERE date = 20180115 AND city = "SQL City" AND type = "murder";
 ```
 
-** Step 2: Tracking down witness statements**
+**Step 2: Tracking down witness statements**
      - Witness #1: lives at last house on "Northwestern Dr"
      - Witness #2: Annabel, lives somewhere on "Franklin Ave"
 
@@ -154,7 +154,7 @@ Jeremy says he was hired by a woman who:
     - Drives a Tesla Model S
     - Attended SQL Symphony Concert three times in December 2017
     
-**Step 6: Find the woman who hired Jeremy**
+**Step 7: Find the woman who hired Jeremy**
 
 ```
 SELECT *
