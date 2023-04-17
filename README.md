@@ -6,7 +6,7 @@ Do not read any further if you want to figure out the solution on your own! I ut
 
 ## Table of Contents
 
- - [Step 1: Retrieving crime scene report](step-by-step.md#step-1)
+ - [Step 1: Retrieving crime scene report](Step-by-Step.md#step-1)
  - [Step 2: Tracking down witness statements](./path/to/step-by-step.md#step-2)
  - [Step 3: Search for Witness #1's data](./path/to/step-by-step.md#step-3)
  - [Step 4: Search for Witness #2's data](./path/to/step-by-step.md#step-4)
