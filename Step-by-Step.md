@@ -1,4 +1,15 @@
-**Step 1: Retrieving crime scene report:**
+## Table of Contents
+
+ - [Step 1: Retrieving crime scene report](#step-1)
+ - [Step 2: Tracking down witness statements](#step-2)
+ - [Step 3: Search for Witness #1's data](#step-3)
+ - [Step 4: Search for Witness #2's data](#step-4)
+ - [Step 5: Find out which potential suspect has a license plate matching the criteria](#step-5)
+ - [Step 6: Find the suspect's police interview on record](#step-6)
+ - [Step 7: Find the bonus answer](#step-7)
+
+## Step 1
+**Retrieving crime scene report:**
 
     Using the preset query I discovered the database has the tables: 
         - crime_scene_report
@@ -35,7 +46,8 @@ FROM crime_scene_report
 WHERE date = 20180115 AND city = "SQL City" AND type = "murder";
 ```
 
-**Step 2: Tracking down witness statements**
+## Step 2
+**Tracking down witness statements**
      - Witness #1: lives at last house on "Northwestern Dr"
      - Witness #2: Annabel, lives somewhere on "Franklin Ave"
 
@@ -58,7 +70,8 @@ FROM interview
 WHERE person_id = 14887;
 ```
 
-**Step 3: Search for Witness #1's partial sighting of Gym Bag # and License Plate #**
+## Step 3: 
+**Search for Witness #1's partial sighting of Gym Bag # and License Plate #**
      - Gym bag, supposedly a Gold Member,  started with "48Z"
      - License plate included "H42W"
 
@@ -85,7 +98,8 @@ WHERE plate_number LIKE "%H42W%";
 ```
 
 
-**Step 4: Search for Witness #2, Annabel's statement**
+## Step 4
+**Search for Witness #2, Annabel's statement**
 
 ```
 SELECT *
@@ -123,7 +137,8 @@ Two people fit this citerea:
     Either could have been seen by Annabel at the crime scene and the gym on Jan. 9th.
     They are both Gold Members at the gym with member ID's that match Witness #1's criteria.
     
-**Step 5: Find out which potential suspect has a license plate matching Witness #1's criteria**
+## Step 5
+**Find out which potential suspect has a license plate matching Witness #1's criteria**
 
 ```
 SELECT *
@@ -140,7 +155,8 @@ WHERE id = 173289 OR id = 423327
 AND plate_number LIKE "%H42W%";
 ```
 
-**Step 6: Jeremy appears to be our suspect. Let's see if he has a police interview on record:**
+## Step 6
+**Jeremy appears to be our suspect. Let's see if he has a police interview on record:**
 
 ```
 SELECT *
@@ -154,7 +170,8 @@ Jeremy says he was hired by a woman who:
     - Drives a Tesla Model S
     - Attended SQL Symphony Concert three times in December 2017
     
-**Step 7: Find the woman who hired Jeremy**
+## Step 7
+**Find the woman who hired Jeremy**
 
 ```
 SELECT *
